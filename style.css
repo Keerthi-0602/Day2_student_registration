@@ -1,64 +1,79 @@
+/* ===== CSS Variables ===== */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --font-color: #fff;
+    --font-family: 'Arial', sans-serif;
+}
+
+/* ===== Global Styles ===== */
 body {
-    font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: var(--font-family);
     margin: 0;
-}
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
-    width: 380px;
-    animation: fadeIn 0.8s ease-in-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-h2 {
-    text-align: center;
-    color: #2575fc;
-    margin-bottom: 20px;
-    font-size: 26px;
-    letter-spacing: 1px;
-}
-label {
-    display: block;
-    margin-top: 12px;
-    font-weight: bold;
+    background-color: #f0f0f0;
     color: #333;
 }
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: 0.3s;
+
+/* ===== Header ===== */
+header {
+    background-color: var(--primary-color);
+    color: var(--font-color);
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
 }
-input:focus, select:focus {
-    border-color: #2575fc;
-    outline: none;
-    box-shadow: 0 0 5px rgba(37,117,252,0.5);
-}
+
+/* ===== Buttons ===== */
 button {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--font-color);
     border: none;
-    margin-top: 18px;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 10px 15px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.4s ease, transform 0.2s ease;
 }
+
+/* Hover effect */
 button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* ===== Pseudo-element Decoration ===== */
+.info-section h2::before {
+    content: "✨ ";
+    color: gold;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.info-section, .dynamic-list, .form-section {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* ===== Responsive Layout ===== */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1 1 300px;
+}
+
+/* ===== Form Styling ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
