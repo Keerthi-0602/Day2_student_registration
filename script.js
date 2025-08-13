@@ -1,47 +1,23 @@
-// Welcome alert when page loads
-window.onload = () => {
-    alert("Welcome to my enhanced project!");
-};
-
-// ===== Functions & Arrays =====
-function changeSectionContent() {
-    const section = document.querySelector('.info-section p');
-    const colors = ['#ff7675', '#74b9ff', '#55efc4', '#ffeaa7'];
-    const texts = [
-        "You clicked the button!",
-        "Hello from JavaScript!",
-        "This section just changed!",
-        "Dynamic update complete!"
-    ];
-
-    // Pick random color and text
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    section.textContent = texts[randomIndex];
-    section.style.backgroundColor = colors[randomIndex];
-}
-
-// ===== Event Listener for Click Me Button =====
-document.getElementById("clickMeBtn").addEventListener("click", changeSectionContent);
-
-// ===== DOM Manipulation: Create List Dynamically =====
-const items = ["Learn CSS Animations", "Add Hover Effects", "Use Flexbox", "Write Better JS"];
-const list = document.getElementById("itemList");
-
-items.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    list.appendChild(li);
+document.getElementById("clickMeBtn").addEventListener("click", function() {
+    let itemList = document.getElementById("itemList");
+    let newItem = document.createElement("li");
+    newItem.textContent = "Item " + (itemList.children.length + 1);
+    itemList.appendChild(newItem);
 });
 
-// ===== Form Validation =====
 document.getElementById("contactForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
 
-    if (!name || !email) {
-        alert("Please fill out all fields!");
-        return;
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("formMessage");
+
+    if (name && email) {
+        message.textContent = "Thank you, " + name + "! We will contact you at " + email;
+        message.style.color = "green";
+        this.reset();
+    } else {
+        message.textContent = "Please fill out all fields.";
+        message.style.color = "red";
     }
-    alert(`Thanks for contacting us, ${name}!`);
 });
